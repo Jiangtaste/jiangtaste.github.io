@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>在Fish中使用VS code的终端命令 - 姜味</title>
+    
+    <meta name="description" content="虽然VSCode默认提供了快捷安装code命令的方法，但是，如果你使用的是fish shell的时候，你会发信啊VSCode提供的方法并不好使，重新打开终端后，就提示code命令不存在了。
+各种查阅资料后，我整理了如下两种方案。节约你的时间，解决你的痛苦。
+方案1: 使用fish的function，在终端输入如下命令（Fish对fucntion做了支持，可以直接敲）
+function code set location &quot;$PWD/$argv&quot; open -n -b &quot;com.microsoft.VSCode&quot; --args $location end  回车后，输入funcsave code保存，默认保存在~/.config/fish/functions/code.fish中。
+方案2 （推荐）: 使用VSCode官方提供的设置PATH的方法，敲如下命令即可：
+echo &#39;set -g fish_user_paths &quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin&quot; $fish_user_paths&#39;  上述命令将在~/.config/fish/config.fish中添加set -g fish_user_paths &quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin&quot; $fish_user_paths内容。">
+    <meta name="author" content="">
+    
+    <link href="https://jiangtaste.com/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://jiangtaste.com/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://jiangtaste.com/apple-touch-icon.png">
+    <link rel="icon" href="https://jiangtaste.com/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://jiangtaste.com/index.xml" title="姜味">
+    
+    
+    
+    <script>
+      function setTheme() {
+        const prev = Number(localStorage.getItem('time'));
+        const now = Date.now();
+        let sunrise;
+        let sunset;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) return;
+          document.body.classList.add('sunset');
+        }
+
+        if (now - prev > 24 * 60 * 60 * 10000) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = new Date().setHours(sunrise[0], sunrise[1], 0);
+              sunset = new Date().setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('time', now);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        
+        <p class="logo"><a href="https://jiangtaste.com/">姜味</a></p>
+        
+        
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">在Fish中使用VS code的终端命令</h1>
+    <div class="post-meta">November 13, 2018</div>
+  </header>
+  <div class="post-content">
+
+<p>虽然VSCode默认提供了快捷安装code命令的方法，但是，如果你使用的是fish shell的时候，你会发信啊VSCode提供的方法并不好使，重新打开终端后，就提示code命令不存在了。</p>
+
+<p>各种查阅资料后，我整理了如下两种方案。节约你的时间，解决你的痛苦。</p>
+
+<h2 id="方案1">方案1:</h2>
+
+<p>使用fish的function，在终端输入如下命令（Fish对fucntion做了支持，可以直接敲）</p>
+
+<pre><code class="language-shell">function code
+    set location &quot;$PWD/$argv&quot;
+    open -n -b &quot;com.microsoft.VSCode&quot; --args $location
+end
+</code></pre>
+
+<p>回车后，输入<code>funcsave code</code>保存，默认保存在<code>~/.config/fish/functions/code.fish</code>中。</p>
+
+<h2 id="方案2-推荐">方案2 （推荐）:</h2>
+
+<p>使用VSCode官方提供的设置PATH的方法，敲如下命令即可：</p>
+
+<pre><code class="language-shell">echo 'set -g fish_user_paths &quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin&quot; $fish_user_paths'
+</code></pre>
+
+<p>上述命令将在<code>~/.config/fish/config.fish</code>中添加<code>set -g fish_user_paths &quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin&quot; $fish_user_paths</code>内容。</p>
+</div>
+  
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 <a href="https://jiangtaste.com/">姜味</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+<script src="https://jiangtaste.com/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
+

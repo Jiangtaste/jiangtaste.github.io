@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>修复因卸载SourceTree导致git flow无法使用的问题 - 姜味</title>
+    
+    <meta name="description" content="最近从SrouceTree转头git-fork客户端后，发现在git-fork以及命令行中使用git flow init会爆警告信息：
+/Applications/Sourcetree.app/Contents/Resources/bin/getopt: No such file or directory flags:FATAL unable to parse provided options with getopt.
+网上各种检索尚未发现直击要害的方案。尝试之下发现只要删掉~/.gitflow_export这个文件就行了。
+对，就是这样：
+rm ~/.gitflow_export
+完">
+    <meta name="author" content="">
+    
+    <link href="https://jiangtaste.com/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://jiangtaste.com/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://jiangtaste.com/apple-touch-icon.png">
+    <link rel="icon" href="https://jiangtaste.com/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.58.3" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://jiangtaste.com/index.xml" title="姜味">
+    
+    
+    
+    <script>
+      function setTheme() {
+        const prev = Number(localStorage.getItem('time'));
+        const now = Date.now();
+        let sunrise;
+        let sunset;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) return;
+          document.body.classList.add('sunset');
+        }
+
+        if (now - prev > 24 * 60 * 60 * 10000) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = new Date().setHours(sunrise[0], sunrise[1], 0);
+              sunset = new Date().setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('time', now);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        
+        <p class="logo"><a href="https://jiangtaste.com/">姜味</a></p>
+        
+        
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">修复因卸载SourceTree导致git flow无法使用的问题</h1>
+    <div class="post-meta">January 14, 2019</div>
+  </header>
+  <div class="post-content"><p>最近从SrouceTree转头git-fork客户端后，发现在git-fork以及命令行中使用<code>git flow init</code>会爆警告信息：</p>
+
+<p><code>/Applications/Sourcetree.app/Contents/Resources/bin/getopt: No such file or directory flags:FATAL unable to parse provided options with getopt.</code></p>
+
+<p>网上各种检索尚未发现直击要害的方案。尝试之下发现只要删掉<code>~/.gitflow_export</code>这个文件就行了。</p>
+
+<p>对，就是这样：</p>
+
+<p><code>rm ~/.gitflow_export</code></p>
+
+<p>完</p>
+</div>
+  
+  
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 <a href="https://jiangtaste.com/">姜味</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+<script src="https://jiangtaste.com/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
+
