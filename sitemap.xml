@@ -3,36 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://jiangtaste.com/posts/</loc>
-    <lastmod>2019-01-14T17:13:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jiangtaste.com/posts/fixed-connot-use-git-flow-after-uninstall-sourcetree/</loc>
-    <lastmod>2019-01-14T17:13:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jiangtaste.com/</loc>
-    <lastmod>2019-01-14T17:13:50+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jiangtaste.com/posts/install-vscode-command-in-fish-shell/</loc>
-    <lastmod>2018-11-13T17:22:40+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://jiangtaste.com/posts/update-your-brew-version-npm-under-macos/</loc>
-    <lastmod>2018-11-13T17:17:53+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://jiangtaste.com/categories/</loc>
   </url>
   
   <url>
     <loc>https://jiangtaste.com/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://jiangtaste.com/</loc>
   </url>
   
 </urlset>

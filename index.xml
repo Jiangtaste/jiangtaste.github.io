@@ -6,50 +6,9 @@
     <description>Recent content on 姜味</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Jan 2019 17:13:50 +0800</lastBuildDate>
     
 	<atom:link href="https://jiangtaste.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>修复因卸载SourceTree导致git flow无法使用的问题</title>
-      <link>https://jiangtaste.com/posts/fixed-connot-use-git-flow-after-uninstall-sourcetree/</link>
-      <pubDate>Mon, 14 Jan 2019 17:13:50 +0800</pubDate>
-      
-      <guid>https://jiangtaste.com/posts/fixed-connot-use-git-flow-after-uninstall-sourcetree/</guid>
-      <description>最近从SrouceTree转头git-fork客户端后，发现在git-fork以及命令行中使用git flow init会爆警告信息：
-/Applications/Sourcetree.app/Contents/Resources/bin/getopt: No such file or directory flags:FATAL unable to parse provided options with getopt.
-网上各种检索尚未发现直击要害的方案。尝试之下发现只要删掉~/.gitflow_export这个文件就行了。
-对，就是这样：
-rm ~/.gitflow_export
-完</description>
-    </item>
-    
-    <item>
-      <title>在Fish中使用VS code的终端命令</title>
-      <link>https://jiangtaste.com/posts/install-vscode-command-in-fish-shell/</link>
-      <pubDate>Tue, 13 Nov 2018 17:22:40 +0800</pubDate>
-      
-      <guid>https://jiangtaste.com/posts/install-vscode-command-in-fish-shell/</guid>
-      <description>虽然VSCode默认提供了快捷安装code命令的方法，但是，如果你使用的是fish shell的时候，你会发信啊VSCode提供的方法并不好使，重新打开终端后，就提示code命令不存在了。
-各种查阅资料后，我整理了如下两种方案。节约你的时间，解决你的痛苦。
-方案1: 使用fish的function，在终端输入如下命令（Fish对fucntion做了支持，可以直接敲）
-function code set location &amp;quot;$PWD/$argv&amp;quot; open -n -b &amp;quot;com.microsoft.VSCode&amp;quot; --args $location end  回车后，输入funcsave code保存，默认保存在~/.config/fish/functions/code.fish中。
-方案2 （推荐）: 使用VSCode官方提供的设置PATH的方法，敲如下命令即可：
-echo &#39;set -g fish_user_paths &amp;quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin&amp;quot; $fish_user_paths&#39;  上述命令将在~/.config/fish/config.fish中添加set -g fish_user_paths &amp;quot;/Applications/Visual Studio Code.app/Contents/Resources/app/bin&amp;quot; $fish_user_paths内容。</description>
-    </item>
-    
-    <item>
-      <title>如何在Mac OS下，完美的更新brew安装的npm版本</title>
-      <link>https://jiangtaste.com/posts/update-your-brew-version-npm-under-macos/</link>
-      <pubDate>Tue, 13 Nov 2018 17:17:53 +0800</pubDate>
-      
-      <guid>https://jiangtaste.com/posts/update-your-brew-version-npm-under-macos/</guid>
-      <description>相信各位都使用npm命令时收到的提醒更新到最新版本的提示，强迫症不能忍，晚上搜索更新npm的命令，清一色的都是npm i -g npm, 没错这是能更新npm，但当我们是使用的brew安装的node时，有时候上述命令并没有成功覆盖到brew安装node时自带的npm包的。现在分享下我自己摸索的更新方法：
-首先找到当前npm的路径，node版本不同路径不一样
- 先查npm命令路径：which npm，一般输出路径都在/usr/local/bin/npm; 定位到上述路径，只到bin这一层：cd /usr/local/bin; 查看npm命令包的路径: ls -al, 可看到npm对应的路径地址，一般为/usr/local/lib/node_modules/npm/bin/npm-cli.js； 定位到上述路径的lib这一层：cd /usr/local/lib; 运行npm i npm更新npm包;  OK，等待更新完成，运行npm doctor看看还有没有其他问题。这样更新的话就不会在你心爱的电脑上莫名安装多个npm了，虽然安装多个npm并不会有任何使用问题，但是心里总有点不舒服的。
-完</description>
-    </item>
     
   </channel>
 </rss>
